@@ -1,0 +1,49 @@
+<div class="filter-dropdown-wrapper">
+    <div class="dropdown-view-toggle"></div>
+    <div class="filter-dropdown dropdown-view">
+        <div class="filter-tags"></div>
+        <form class="form-horizontal campaign-filter-form">
+            <fieldset>
+                {{#each this}}
+                    {{#ifEquals name "filler"}}
+                        <div class="search-field more-field"></div>
+                    {{else}}
+                        <div class="search-field{{#if separator}} separator-field{{/if}}{{#if more}}
+                            more-field{{/if}}{{#ifEquals range "Left"}} control-left-range{{/ifEquals}}">
+                        <label class="search-field-label">{{i18n "campaigns.filter." name}}</label>
+                            {{#if range }}
+                                <input class="input-range {{name}}-start-class" type="text" placeholder="MIN"
+                                       value="{{lowerValue}}">&nbsp;&nbsp;-&nbsp;&nbsp;<input class="input-range
+                                       {{name}}-end-class" type="text" placeholder="MAX" value="{{upperValue}}">
+                            {{else}}
+                                <input class="input-full {{name}}-class" type="text" placeholder='{{placeHolder}}'
+                                    value="{{value}}"{{#if autoComplete.showMenu}} readonly{{/if}}>
+                            {{/if}}
+                            {{#if separator}}
+                                <div class="more-arrow">
+                                    <span>{{i18n "campaigns.filter.more"}}</span><span class="more-caret-down"></span>
+                                </div>
+                                <div class="less-arrow">
+                                    <span>{{i18n "campaigns.filter.less"}}</span><span class="more-caret-up"></span>
+                                </div>
+                                <hr class="separator">
+                            {{/if}}
+                        </div>
+                    {{/ifEquals}}
+               {{/each}}
+
+                <div class="form-buttons">
+                    <a href="#" class="btn mxf gray extra-btn btn-cancel" data-toggle="dropdown">CANCEL</a>
+                    <a href="#" class="btn mxf orange extra-btn btn-apply" data-toggle="dropdown">SEARCH</a>
+                    <a href="#" class="btn mxf orange extra-btn btn-save" data-toggle="dropdown">SAVE SEARCH</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="campaign-search form-search empty more">
+    <div class="magnifying-glass"></div>
+    <input class="campaign-search-input" type="text" value="{{search}}"/>
+    <button class="close">&times;</button>
+    <div class="filter-view-toggle"></div>
+</div>
